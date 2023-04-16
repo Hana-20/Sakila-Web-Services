@@ -35,11 +35,11 @@ public class Film implements SakilaEntities {
     private Integer releaseYear;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "language_id", nullable = false)
     private Language language;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "original_language_id")
     private Language originalLanguage;
 
