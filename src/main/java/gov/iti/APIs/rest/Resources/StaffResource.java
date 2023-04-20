@@ -56,7 +56,7 @@ public class StaffResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response updateStaff(@PathParam("id") int id, StaffDto staffDto) {
-        crudService.update(staffDto,id);
+        crudService.update(staffDto);
         return Response.ok().build();
     }
 }

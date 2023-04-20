@@ -53,7 +53,7 @@ public class LanguageResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response updateLanguage(@PathParam("id") int id, LanguageDto languageDto) {
-        crudService.update(languageDto,id);
+        crudService.update(languageDto);
         return Response.ok().build();
     }
 }

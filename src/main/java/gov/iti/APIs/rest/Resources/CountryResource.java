@@ -53,7 +53,7 @@ public class CountryResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response updateCountry(@PathParam("id") int id, CountryDto countryDto) {
-        crudService.update(countryDto,id);
+        crudService.update(countryDto);
         return Response.ok().build();
     }
 }

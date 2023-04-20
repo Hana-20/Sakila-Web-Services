@@ -57,7 +57,7 @@ public class StoreResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response updateStore(@PathParam("id") int id, StoreDto storeDto) {
-        crudService.update(storeDto,id);
+        crudService.update(storeDto);
         return Response.ok().build();
 
     }

@@ -53,7 +53,7 @@ public class PaymentResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response updatePayment(@PathParam("id") int id, PaymentDto paymentDto) {
-        crudService.update(paymentDto,id);
+        crudService.update(paymentDto);
         return Response.ok().build();
     }
 }

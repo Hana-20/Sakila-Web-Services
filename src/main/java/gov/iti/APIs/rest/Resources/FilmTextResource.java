@@ -53,7 +53,7 @@ public class FilmTextResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response updateFilmText(@PathParam("id") int id, FilmTextDto filmTextDto) {
-        crudService.update(filmTextDto,id);
+        crudService.update(filmTextDto);
         return Response.ok().build();
     }
 }

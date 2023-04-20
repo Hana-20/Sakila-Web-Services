@@ -57,7 +57,7 @@ public class CustomerResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response updateCustomer(@PathParam("id") int id,CustomerDto customerDto) {
-        crudService.update(customerDto,id);
+        crudService.update(customerDto);
         return Response.ok().build();
 
     }
