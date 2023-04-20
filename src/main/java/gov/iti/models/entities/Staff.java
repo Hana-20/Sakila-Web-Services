@@ -32,7 +32,7 @@ public class Staff implements SakilaEntities {
     private String lastName;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
@@ -44,7 +44,7 @@ public class Staff implements SakilaEntities {
     private String email;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "store_id", nullable = false)
     private Store store;
 

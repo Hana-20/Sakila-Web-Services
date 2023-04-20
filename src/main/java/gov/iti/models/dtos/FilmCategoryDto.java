@@ -1,6 +1,7 @@
 package gov.iti.models.dtos;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
 
 import java.io.Serializable;
@@ -14,6 +15,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@XmlRootElement
 public class FilmCategoryDto implements Serializable, SakilaDtos {
     private  FilmCategoryIdDto id;
     private  FilmDto film;

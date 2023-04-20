@@ -3,6 +3,7 @@ package gov.iti.models.dtos;
 import gov.iti.models.entities.Address;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
 
 import java.io.Serializable;
@@ -16,6 +17,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@XmlRootElement
 public class AddressDto implements Serializable, SakilaDtos {
     private Integer id;
     @Size(max = 50)

@@ -21,17 +21,16 @@ public class Store implements SakilaEntities {
     private Short id;
 
     @NotNull
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "manager_staff_id", nullable = false)
-    private Staff managerStaff;
+    @Column(name = "manager_staff_id", nullable = false)
+    @JoinColumn(name = "staff_id", referencedColumnName = "staff_id")
+    private Integer managerStaffId;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "address_id", nullable = false)
-    private Address address;
+    @Column(name = "address_id", nullable = false)
+    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
+    private Integer addressId;
 
     @NotNull
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
-
 }
