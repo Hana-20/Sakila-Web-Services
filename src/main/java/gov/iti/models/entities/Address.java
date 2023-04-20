@@ -39,15 +39,14 @@ public class Address implements SakilaEntities {
     private String phone;
     @Basic(optional = false)
     @Lob
-    @Column(name = "location")
+    @Column(name = "location" ,columnDefinition = "BLOB NOT NULL DEFAULT 0x00")
     private byte[] location;
     @Basic(optional = false)
     @Column(name = "last_update")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
-    @JoinColumn(name = "city_id", referencedColumnName = "city_id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private City cityId;
+    @Column(name = "city_id")
+    private Integer cityId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id", fetch = FetchType.LAZY)
     private Set<Staff> staffSet;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id", fetch = FetchType.LAZY)

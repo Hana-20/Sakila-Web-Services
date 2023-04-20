@@ -53,7 +53,7 @@ public class InventoryResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response updateInventory(@PathParam("id") int id, InventoryDto inventoryDto) {
-        crudService.update(inventoryDto);
+        crudService.update(inventoryDto,id);
         return Response.ok().build();
     }
 }

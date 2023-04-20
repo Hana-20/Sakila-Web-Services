@@ -12,12 +12,18 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.Set;
 
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "actor")
+@DynamicInsert
+@DynamicUpdate
 public class Actor implements SakilaEntities {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +40,7 @@ public class Actor implements SakilaEntities {
     @Column(name = "last_name", nullable = false, length = 45)
     private String lastName;
 
-    @Basic(optional = false)
+    @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "last_update")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;

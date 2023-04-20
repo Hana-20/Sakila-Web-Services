@@ -7,8 +7,8 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.time.Instant;
+import java.util.Date;
 
 /**
  * A DTO for the {@link Address} entity
@@ -20,7 +20,7 @@ import java.time.Instant;
 @Data
 @XmlRootElement
 public class AddressDto implements Serializable, SakilaDtos {
-    private Integer id;
+    private Integer addressId;
     @Size(max = 50)
     @NotNull
     private String address;
@@ -29,8 +29,10 @@ public class AddressDto implements Serializable, SakilaDtos {
     @Size(max = 20)
     @NotNull
     private String district;
-    // @NotNull
-    // private  CityDto city;
+    @NotNull
+    private  Integer cityId;
+    @NotNull
+    private byte[] location;
     @Size(max = 10)
     private String postalCode;
     @Size(max = 20)

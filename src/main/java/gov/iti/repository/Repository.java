@@ -8,8 +8,12 @@ import gov.iti.models.entities.SakilaEntities;
 public interface Repository<T> {
 
     public SakilaEntities getById(Integer id);
+
     public void delete(Integer id);
-    public void update(SakilaDtos entity);
-    public void insert(SakilaDtos entity);
-    public List<SakilaEntities>findAll();
+
+    public void update(SakilaDtos dto);
+
+    public void insert(SakilaDtos dto);
+
+    public List<SakilaEntities> findAll();
 }

@@ -10,9 +10,64 @@
         name="AddressService"
         implementation="gov.iti.APIs.soap.AddressService"
         url-pattern="/ws/AddressService" />
+
+            <endpoint
+        name="CategoryService"
+        implementation="gov.iti.APIs.soap.CategoryService"
+        url-pattern="/ws/CategoryService" />
+
+        <endpoint
+        name="CityService"
+        implementation="gov.iti.APIs.soap.CityService"
+        url-pattern="/ws/CityService" />
+
+         <endpoint
+        name="CountryService"
+        implementation="gov.iti.APIs.soap.CountryService"
+        url-pattern="/ws/CountryService" />
         
-        <!-- <endpoint
-        name="CrudService"
-        implementation="gov.iti.services.CrudServices"
-        url-pattern="/ws/CrudService" /> -->
+         <endpoint
+        name="CustomerService"
+        implementation="gov.iti.APIs.soap.CustomerService"
+        url-pattern="/ws/CustomerService" />
+
+             <endpoint
+        name="FilmService"
+        implementation="gov.iti.APIs.soap.FilmService"
+        url-pattern="/ws/FilmService" />
+
+         <endpoint
+        name="FilmTextService"
+        implementation="gov.iti.APIs.soap.FilmTextService"
+        url-pattern="/ws/FilmTextService" />
+
+           <endpoint
+        name="InventoryService"
+        implementation="gov.iti.APIs.soap.InventoryService"
+        url-pattern="/ws/InventoryService" />
+
+     <endpoint
+        name="LanguageService"
+        implementation="gov.iti.APIs.soap.LanguageService"
+        url-pattern="/ws/LanguageService" />
+
+         <endpoint
+        name="PaymentService"
+        implementation="gov.iti.APIs.soap.PaymentService"
+        url-pattern="/ws/PaymentService" />
+
+         <endpoint
+        name="RentalService"
+        implementation="gov.iti.APIs.soap.RentalService"
+        url-pattern="/ws/RentalService" />
+      
+          <endpoint
+        name="StaffService"
+        implementation="gov.iti.APIs.soap.StaffService"
+        url-pattern="/ws/StaffService" />
+
+         <endpoint
+        name="StoreService"
+        implementation="gov.iti.APIs.soap.StoreService"
+        url-pattern="/ws/StoreService" />
 </endpoints>

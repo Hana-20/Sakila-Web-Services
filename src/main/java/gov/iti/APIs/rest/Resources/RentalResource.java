@@ -53,7 +53,7 @@ public class RentalResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response updateRental(@PathParam("id") int id, RentalDto rentalDto) {
-        crudService.update(rentalDto);
+        crudService.update(rentalDto,id);
         return Response.ok().build();
     }
 }

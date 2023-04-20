@@ -17,6 +17,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class ActorDto implements Serializable, SakilaDtos {
     private Integer id;
     @Size(max = 45)

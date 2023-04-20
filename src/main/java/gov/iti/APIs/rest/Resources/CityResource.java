@@ -53,7 +53,7 @@ public class CityResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response updateCity(@PathParam("id") int id, CityDto cityDto) {
-        crudService.update(cityDto);
+        crudService.update(cityDto,id);
         return Response.ok().build();
     }
 }

@@ -57,7 +57,7 @@ public class AddressResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response updateAddress(@PathParam("id") int id,AddressDto addressDto) {
-        crudService.update(addressDto);
+        crudService.update(addressDto,id);
         return Response.ok().build();
 
     }

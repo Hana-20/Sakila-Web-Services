@@ -25,9 +25,6 @@ public class CrudServices<T extends SakilaDtos> {
         this.dtoClass = dtoClass;
         ModelMapper modelMapper = new ModelMapper();
 
-modelMapper.getConfiguration()
-    .setPropertyCondition(Conditions.isNotNull())
-    .setSkipNullEnabled(true);
 
 
 // modelMapper.getConfiguration().setGlobalConfiguration(modelMapper.getConfiguration());

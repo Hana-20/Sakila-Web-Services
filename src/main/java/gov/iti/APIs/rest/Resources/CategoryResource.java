@@ -58,7 +58,7 @@ public class CategoryResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response updateCategory(@PathParam("id") int id,CategoryDto categoryDto) {
-        crudService.update(categoryDto);
+        crudService.update(categoryDto,id);
         return Response.ok().build();
 
     }
