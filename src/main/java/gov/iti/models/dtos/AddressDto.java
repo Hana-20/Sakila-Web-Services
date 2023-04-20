@@ -7,6 +7,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.Instant;
 
 /**
@@ -28,13 +29,13 @@ public class AddressDto implements Serializable, SakilaDtos {
     @Size(max = 20)
     @NotNull
     private String district;
-    @NotNull
-    private  CityDto city;
+    // @NotNull
+    // private  CityDto city;
     @Size(max = 10)
     private String postalCode;
     @Size(max = 20)
     @NotNull
     private String phone;
     @NotNull
-    private  Instant lastUpdate;
+    private Date lastUpdate;
 }

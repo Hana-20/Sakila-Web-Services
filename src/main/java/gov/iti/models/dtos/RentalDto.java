@@ -21,12 +21,12 @@ public class RentalDto implements Serializable, SakilaDtos {
     @NotNull
     private  Instant rentalDate;
     @NotNull
-    private  InventoryDto inventory;
+    private  Integer inventoryId;
     @NotNull
-    private  CustomerDto customer;
+    private  Integer customerId;
     private  Instant returnDate;
     @NotNull
-    private  StaffDto staff;
+    private  Integer staffId;
     @NotNull
     private  Instant lastUpdate;
 }

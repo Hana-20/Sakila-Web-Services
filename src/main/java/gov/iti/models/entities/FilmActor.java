@@ -20,7 +20,7 @@ public class FilmActor implements SakilaEntities {
     private FilmActorId id;
 
     @MapsId("actorId")
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "actor_id", nullable = false)
     private Actor actor;
 

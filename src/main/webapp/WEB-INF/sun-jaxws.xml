@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
+
+    <endpoint
+        name="ActorService"
+        implementation="gov.iti.APIs.soap.ActorService"
+        url-pattern="/ws/ActorService" />
+        <endpoint
+        name="AddressService"
+        implementation="gov.iti.APIs.soap.AddressService"
+        url-pattern="/ws/AddressService" />
+        
+        <!-- <endpoint
+        name="CrudService"
+        implementation="gov.iti.services.CrudServices"
+        url-pattern="/ws/CrudService" /> -->
+</endpoints>

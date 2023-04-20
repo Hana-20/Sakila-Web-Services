@@ -18,22 +18,19 @@ import java.time.Instant;
 @Table(name = "payment")
 public class Payment implements SakilaEntities {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id", columnDefinition = "SMALLINT UNSIGNED not null")
     private Integer id;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
+    @Column(name = "customer_id", nullable = false)
+    private Integer customerId;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "staff_id", nullable = false)
-    private Staff staff;
+    
+    @Column(name = "staff_id", nullable = false)
+    private Integer staffId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "rental_id")
-    private Rental rental;
+    @Column(name = "rental_id")
+    private Integer rental;
 
     @NotNull
     @Column(name = "amount", nullable = false, precision = 5, scale = 2)

@@ -20,13 +20,14 @@ import java.time.Instant;
 public class PaymentDto implements Serializable, SakilaDtos {
     private  Integer id;
     @NotNull
-    private  CustomerDto customer;
+    private  Integer customerId;
     @NotNull
-    private  StaffDto staff;
-    private  RentalDto rental;
+    private  Integer staffId;
+    private Integer rental;
     @NotNull
     private  BigDecimal amount;
     @NotNull
     private  Instant paymentDate;
+    @NotNull
     private  Instant lastUpdate;
 }

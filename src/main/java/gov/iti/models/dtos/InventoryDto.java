@@ -20,8 +20,8 @@ public class InventoryDto implements Serializable, SakilaDtos {
     private Integer id;
     @NotNull
     private FilmDto film;
-    @NotNull
-    private StoreDto store;
+    // @NotNull
+    // private StoreDto store;
     @NotNull
     private  Instant lastUpdate;
 }

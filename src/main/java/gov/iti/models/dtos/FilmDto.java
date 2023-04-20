@@ -9,6 +9,8 @@ import lombok.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.Date;
+import java.util.Set;
 
 /**
  * A DTO for the {@link Film} entity
@@ -40,5 +42,8 @@ public class FilmDto implements Serializable, SakilaDtos {
     @Size(max = 54)
     private  String specialFeatures;
     @NotNull
-    private  Instant lastUpdate;
+    private  Date lastUpdate;
+    private Set<FilmCategoryDto> filmCategorySet;
+
+    // private Set<FilmActorDto> filmActorSet;
 }

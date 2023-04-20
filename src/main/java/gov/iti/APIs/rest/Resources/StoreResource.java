@@ -1,32 +1,13 @@
 package gov.iti.APIs.rest.Resources;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import gov.iti.models.dtos.FilmTextDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.models.dtos.StoreDto;
 import gov.iti.services.CrudServices;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.DELETE;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.PUT;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.Context;
-import jakarta.ws.rs.core.GenericEntity;
-import jakarta.ws.rs.core.Link;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.core.UriInfo;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Path(value = "StoreResource")
 public class StoreResource {
@@ -70,7 +51,6 @@ public class StoreResource {
        crudService.add(storeDto);
         return Response.ok().build();
         // return Response.ok("").build();
-
     }
 
     @PUT

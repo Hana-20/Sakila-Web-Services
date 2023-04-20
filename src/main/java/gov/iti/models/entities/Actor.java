@@ -1,9 +1,6 @@
 package gov.iti.models.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -12,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.Date;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -21,6 +20,7 @@ import java.time.Instant;
 @Table(name = "actor")
 public class Actor implements SakilaEntities {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "actor_id", columnDefinition = "SMALLINT UNSIGNED not null")
     private Integer id;
 
@@ -34,8 +34,14 @@ public class Actor implements SakilaEntities {
     @Column(name = "last_name", nullable = false, length = 45)
     private String lastName;
 
-    @NotNull
-    @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
+    @Basic(optional = false)
+    @Column(name = "last_update")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastUpdate;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "actor", fetch = FetchType.EAGER)
+    private Set<FilmActor> filmActorSet;
+
+
 
 }

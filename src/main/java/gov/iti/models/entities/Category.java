@@ -1,9 +1,6 @@
 package gov.iti.models.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -12,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.Date;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -21,6 +20,7 @@ import java.time.Instant;
 @Table(name = "category")
 public class Category implements SakilaEntities {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id", columnDefinition = "TINYINT UNSIGNED not null")
     private Short id;
 
@@ -29,8 +29,12 @@ public class Category implements SakilaEntities {
     @Column(name = "name", nullable = false, length = 25)
     private String name;
 
-    @NotNull
-    @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
+    @Basic(optional = false)
+    @Column(name = "last_update")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastUpdate;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category", fetch = FetchType.LAZY)
+    private Set<FilmCategory> filmCategorySet;
 
 }

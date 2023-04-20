@@ -1,7 +1,6 @@
 package gov.iti.models.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,20 +16,19 @@ import java.time.Instant;
 @Table(name = "store")
 public class Store implements SakilaEntities {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "store_id", columnDefinition = "TINYINT UNSIGNED not null")
     private Short id;
 
-    @NotNull
-    @Column(name = "manager_staff_id", nullable = false)
-    @JoinColumn(name = "staff_id", referencedColumnName = "staff_id")
-    private Integer managerStaffId;
+    @OneToOne(fetch = FetchType.EAGER, optional = true)
+    @JoinColumn(name = "manager_staff_id", nullable = true)
+    private Staff managerStaff;
 
-    @NotNull
-    @Column(name = "address_id", nullable = false)
-    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
-    private Integer addressId;
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    @JoinColumn(name = "address_id", nullable = true)
+    private Address address;
 
-    @NotNull
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
+
 }

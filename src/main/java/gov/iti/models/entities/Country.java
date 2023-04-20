@@ -1,9 +1,6 @@
 package gov.iti.models.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -12,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.Date;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,6 +21,7 @@ import java.time.Instant;
 public class Country implements SakilaEntities {
     @Id
     @Column(name = "country_id", columnDefinition = "SMALLINT UNSIGNED not null")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Size(max = 50)
@@ -29,8 +29,10 @@ public class Country implements SakilaEntities {
     @Column(name = "country", nullable = false, length = 50)
     private String country;
 
-    @NotNull
-    @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
+    @Column(name = "last_update")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastUpdate;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "countryId", fetch = FetchType.EAGER)
+    private Set<City> citySet;
 
 }

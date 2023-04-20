@@ -1,38 +1,20 @@
 package gov.iti.APIs.rest.Resources;
 
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
+import gov.iti.models.dtos.ActorDto;
+import gov.iti.models.dtos.SakilaDtos;
+import gov.iti.services.CrudServices;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import gov.iti.models.dtos.ActorDto;
-import gov.iti.models.dtos.FilmTextDto;
-import gov.iti.models.dtos.SakilaDtos;
-import gov.iti.models.dtos.StoreDto;
-import gov.iti.services.CrudServices;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.DELETE;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.PUT;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.Context;
-import jakarta.ws.rs.core.GenericEntity;
-import jakarta.ws.rs.core.Link;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.core.UriInfo;
 
 @Path("ActorResource")
 public class ActorResource {
     private CrudServices<ActorDto> crudService = new CrudServices<>(ActorDto.class);
     @GET
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public Response getAllStores() {
+    public Response getAllActores() {
 
         // crudService.findAll().forEach(e->System.out.println(e.toString()));
         List<ActorDto> actorDtos = new ArrayList<>();
@@ -75,6 +57,7 @@ public class ActorResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response updateActor(@PathParam("id") int id, ActorDto actorDto) {
+        actorDto.setId(id);
         crudService.update(actorDto);
         return Response.ok().build();
 

@@ -9,13 +9,14 @@ import gov.iti.models.entities.EntityFactory;
 import gov.iti.models.entities.SakilaEntities;
 import gov.iti.models.mappers.SakilaMapper;
 import gov.iti.repository.Repository;
+import gov.iti.repository.connection.ConnectionManager;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 
 public class RepositoryImpl<T extends SakilaEntities> implements Repository<T> {
-    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("HAM");
+    static EntityManagerFactory emf = ConnectionManager.getInstance().getEntityManagerFactory();
 
     private final Class<T> entityClass;
 
@@ -34,13 +35,16 @@ public class RepositoryImpl<T extends SakilaEntities> implements Repository<T> {
     @Override
     public void delete(Integer id) {
         EntityManager em = emf.createEntityManager();
-        String jpql = "DELETE FROM " + entityClass.getSimpleName() + " e WHERE e.id = :id";
-        Query query = em.createQuery(jpql);
-        query.setParameter("id", id);
+        // String jpql = "DELETE FROM " + entityClass.getSimpleName() + " e WHERE e.id = :id";
+        // Query query = em.createQuery(jpql);
+        // query.setParameter("id", id);
+        
         em.getTransaction().begin();
-        int deletedCount = query.executeUpdate();
+        // int deletedCount = query.executeUpdate();
+        T obj = em.find(entityClass, id);
+        em.remove(obj);
         em.getTransaction().commit();
-        System.out.println(deletedCount);
+        // System.out.println(deletedCount);
         em.close();
 
     }

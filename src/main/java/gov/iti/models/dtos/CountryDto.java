@@ -7,7 +7,9 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.Instant;
+import java.util.Set;
 
 /**
  * A DTO for the {@link Country} entity
@@ -24,5 +26,7 @@ public class CountryDto implements Serializable, SakilaDtos {
     @NotNull
     private  String country;
     @NotNull
-    private  Instant lastUpdate;
+    private  Date lastUpdate;
+    @NotNull
+    private Set<CityDto> citySet;
 }

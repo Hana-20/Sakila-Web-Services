@@ -10,6 +10,8 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.Date;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -19,6 +21,8 @@ import java.time.Instant;
 @Table(name = "film")
 public class Film implements SakilaEntities {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "film_id", columnDefinition = "SMALLINT UNSIGNED not null")
     private Integer id;
 
@@ -65,8 +69,15 @@ public class Film implements SakilaEntities {
     @Column(name = "special_features", length = 54)
     private String specialFeatures;
 
-    @NotNull
-    @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
 
+    @Basic(optional = false)
+    @Column(name = "last_update")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastUpdate;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "film", fetch = FetchType.EAGER)
+    private Set<FilmCategory> filmCategorySet;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "film", fetch = FetchType.EAGER)
+    private Set<FilmActor> filmActorSet;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "film", fetch = FetchType.LAZY)
+    private Set<Inventory> inventorySet;
 }

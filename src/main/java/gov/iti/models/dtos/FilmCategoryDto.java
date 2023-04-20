@@ -18,7 +18,6 @@ import java.time.Instant;
 @XmlRootElement
 public class FilmCategoryDto implements Serializable, SakilaDtos {
     private  FilmCategoryIdDto id;
-    private  FilmDto film;
     private  CategoryDto category;
     @NotNull
     private  Instant lastUpdate;

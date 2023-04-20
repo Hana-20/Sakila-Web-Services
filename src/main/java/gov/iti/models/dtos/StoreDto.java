@@ -10,6 +10,8 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+import gov.iti.models.entities.Staff;
+
 /**
  * A DTO for the {@link gov.iti.models.entities.Store} entity
  */
@@ -17,15 +19,12 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 @XmlRootElement
 public class StoreDto implements Serializable , SakilaDtos {
     private  Integer id;
-    @NotNull
-    private  Integer managerStaffId;
-    @NotNull
-    private  Integer addressId;
-    @NotNull
+    
+    private  StaffDto managerStaff;
+    private  AddressDto address;
     private  Instant lastUpdate;
     
     private List<Link>links=new ArrayList<Link>();

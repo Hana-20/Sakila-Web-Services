@@ -16,6 +16,8 @@ import lombok.Setter;
 @Table(name = "film_text")
 public class FilmText implements SakilaEntities {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "film_id", nullable = false)
     private Short id;
 

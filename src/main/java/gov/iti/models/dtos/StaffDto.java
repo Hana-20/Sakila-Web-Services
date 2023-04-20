@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.Set;
 
 /**
  * A DTO for the {@link gov.iti.models.entities.Staff} entity
@@ -23,13 +24,13 @@ public class StaffDto implements Serializable, SakilaDtos {
     @Size(max = 45)
     @NotNull
     private  String lastName;
-    @NotNull
-    private AddressDto address;
+    // @NotNull
+    // private AddressDto address;
     private  byte[] picture;
     @Size(max = 50)
     private  String email;
     @NotNull
-    private  StoreDto store;
+    private  Integer storeId;
     @NotNull
     private  Boolean active;
     @Size(max = 16)
@@ -39,4 +40,10 @@ public class StaffDto implements Serializable, SakilaDtos {
     private  String password;
     @NotNull
     private  Instant lastUpdate;
+    @NotNull
+    private Set<RentalDto> rentalSet;
+    @NotNull
+    private Set<PaymentDto> paymentSet;
+
+
 }

@@ -17,6 +17,8 @@ import java.time.Instant;
 @Table(name = "inventory")
 public class Inventory implements SakilaEntities {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "inventory_id", nullable = false)
     private Integer id;
 

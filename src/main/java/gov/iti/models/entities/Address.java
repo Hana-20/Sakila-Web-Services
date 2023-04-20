@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.Date;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -18,40 +20,40 @@ import java.time.Instant;
 @Table(name = "address")
 public class Address implements SakilaEntities {
     @Id
-    @Column(name = "address_id", columnDefinition = "SMALLINT UNSIGNED not null")
-    private Integer id;
-
-    @Size(max = 50)
-    @NotNull
-    @Column(name = "address", nullable = false, length = 50)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "address_id")
+    private Short addressId;
+    @Basic(optional = false)
+    @Column(name = "address")
     private String address;
-
-    @Size(max = 50)
-    @Column(name = "address2", length = 50)
+    @Column(name = "address2")
     private String address2;
-
-    @Size(max = 20)
-    @NotNull
-    @Column(name = "district", nullable = false, length = 20)
+    @Basic(optional = false)
+    @Column(name = "district")
     private String district;
-
-    @NotNull
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "city_id", nullable = false)
-    private City city;
-
-    @Size(max = 10)
-    @Column(name = "postal_code", length = 10)
+    @Column(name = "postal_code")
     private String postalCode;
-
-    @Size(max = 20)
-    @NotNull
-    @Column(name = "phone", nullable = false, length = 20)
+    @Basic(optional = false)
+    @Column(name = "phone")
     private String phone;
-
-    @NotNull
-    @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
+    @Basic(optional = false)
+    @Lob
+    @Column(name = "location")
+    private byte[] location;
+    @Basic(optional = false)
+    @Column(name = "last_update")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastUpdate;
+    @JoinColumn(name = "city_id", referencedColumnName = "city_id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private City cityId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id", fetch = FetchType.LAZY)
+    private Set<Staff> staffSet;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id", fetch = FetchType.LAZY)
+    private Set<Store> storeSet;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id", fetch = FetchType.LAZY)
+    private Set<Customer> customerSet;
 
 /*
     TODO [JPA Buddy] create field to map the 'location' column

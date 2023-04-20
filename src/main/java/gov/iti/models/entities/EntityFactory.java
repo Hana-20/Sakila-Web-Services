@@ -1,22 +1,6 @@
 package gov.iti.models.entities;
 
-import gov.iti.models.dtos.ActorDto;
-import gov.iti.models.dtos.AddressDto;
-import gov.iti.models.dtos.CategoryDto;
-import gov.iti.models.dtos.CityDto;
-import gov.iti.models.dtos.CountryDto;
-import gov.iti.models.dtos.CustomerDto;
-import gov.iti.models.dtos.FilmActorDto;
-import gov.iti.models.dtos.FilmCategoryDto;
-import gov.iti.models.dtos.FilmDto;
-import gov.iti.models.dtos.FilmTextDto;
-import gov.iti.models.dtos.InventoryDto;
-import gov.iti.models.dtos.LanguageDto;
-import gov.iti.models.dtos.PaymentDto;
-import gov.iti.models.dtos.RentalDto;
-import gov.iti.models.dtos.SakilaDtos;
-import gov.iti.models.dtos.StaffDto;
-import gov.iti.models.dtos.StoreDto;
+import gov.iti.models.dtos.*;
 
 public class EntityFactory {
 

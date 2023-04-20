@@ -6,19 +6,32 @@ import gov.iti.models.entities.SakilaEntities;
 import gov.iti.models.mappers.SakilaMapper;
 import gov.iti.repository.implmentation.RepositoryImpl;
 
+import org.modelmapper.Conditions;
+import org.modelmapper.ModelMapper;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.modelmapper.ModelMapper;
-
+// @WebService
+// @XmlRootElement
 public class CrudServices<T extends SakilaDtos> {
     private Class<T> dtoClass;
     private RepositoryImpl repositoryImpl;
     private Class<? extends SakilaEntities> entityClass;
+
     private SakilaMapper sakilaMapper = new SakilaMapper(new ModelMapper());
 
     public CrudServices(Class<T> dtoClass) {
         this.dtoClass = dtoClass;
+        ModelMapper modelMapper = new ModelMapper();
+
+modelMapper.getConfiguration()
+    .setPropertyCondition(Conditions.isNotNull())
+    .setSkipNullEnabled(true);
+
+
+// modelMapper.getConfiguration().setGlobalConfiguration(modelMapper.getConfiguration());
+
         entityClass = EntityFactory.createEntity(dtoClass);
         this.repositoryImpl = new RepositoryImpl<>(entityClass);
 

@@ -17,6 +17,7 @@ import java.time.Instant;
 @Table(name = "rental")
 public class Rental implements SakilaEntities {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rental_id", nullable = false)
     private Integer id;
 
@@ -24,23 +25,20 @@ public class Rental implements SakilaEntities {
     @Column(name = "rental_date", nullable = false)
     private Instant rentalDate;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "inventory_id", nullable = false)
-    private Inventory inventory;
+   
+    @Column(name = "inventory_id", nullable = false)
+    private Integer inventoryId;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
+   
+    @Column(name = "customer_id", nullable = false)
+    private Integer customerId;
 
     @Column(name = "return_date")
     private Instant returnDate;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "staff_id", nullable = false)
-    private Staff staff;
+    
+    @Column(name = "staff_id", nullable = false)
+    private Integer staffId;
 
     @NotNull
     @Column(name = "last_update", nullable = false)

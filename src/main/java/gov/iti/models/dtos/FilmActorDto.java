@@ -1,5 +1,6 @@
 package gov.iti.models.dtos;
 
+import gov.iti.models.entities.Film;
 import gov.iti.models.entities.FilmActor;
 import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -19,8 +20,7 @@ import java.time.Instant;
 @XmlRootElement
 public class FilmActorDto implements Serializable, SakilaDtos {
     private  FilmActorIdDto id;
-    private  ActorDto actor;
-    private  FilmDto film;
     @NotNull
     private  Instant lastUpdate;
+    private FilmDto film;
 }

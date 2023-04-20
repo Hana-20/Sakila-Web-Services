@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.Date;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -18,6 +20,7 @@ import java.time.Instant;
 @Table(name = "staff")
 public class Staff implements SakilaEntities {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "staff_id", columnDefinition = "TINYINT UNSIGNED not null")
     private Short id;
 
@@ -43,10 +46,8 @@ public class Staff implements SakilaEntities {
     @Column(name = "email", length = 50)
     private String email;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinColumn(name = "store_id", nullable = false)
-    private Store store;
+    @Column(name = "store_id", nullable = false)
+    private Integer storeId;
 
     @NotNull
     @Column(name = "active", nullable = false)
@@ -63,6 +64,11 @@ public class Staff implements SakilaEntities {
 
     @NotNull
     @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
+    private Date lastUpdate;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id", fetch = FetchType.EAGER)
+    private Set<Rental> rentalSet;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id", fetch = FetchType.EAGER)
+    private Set<Payment> paymentSet;
 
 }

@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.Date;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -19,20 +21,18 @@ import java.time.Instant;
 public class City implements SakilaEntities {
     @Id
     @Column(name = "city_id", columnDefinition = "SMALLINT UNSIGNED not null")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     @Size(max = 50)
     @NotNull
     @Column(name = "city", nullable = false, length = 50)
     private String city;
-
-    @NotNull
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "country_id", nullable = false)
-    private Country country;
-
-    @NotNull
-    @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
-
+    @Column(name = "last_update")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastUpdate;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cityId", fetch = FetchType.EAGER)
+    private Set<Address> addressSet;
+    @JoinColumn(name = "country_id", referencedColumnName = "country_id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Country countryId;
 }

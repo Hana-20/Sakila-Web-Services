@@ -8,6 +8,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.Set;
 
 /**
  * A DTO for the {@link City} entity
@@ -23,8 +24,11 @@ public class CityDto implements Serializable, SakilaDtos {
     @Size(max = 50)
     @NotNull
     private String city;
+    // @NotNull
+    // private  CountryDto country;
     @NotNull
-    private  CountryDto country;
+    private  Instant lastUpdate;   
+
     @NotNull
-    private  Instant lastUpdate;
+    private Set<AddressDto> addressSet;
 }

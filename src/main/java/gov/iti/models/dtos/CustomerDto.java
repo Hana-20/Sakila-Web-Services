@@ -6,7 +6,9 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.Instant;
+import java.util.Set;
 
 /**
  * A DTO for the {@link gov.iti.models.entities.Customer} entity
@@ -18,22 +20,27 @@ import java.time.Instant;
 @Data
 @XmlRootElement
 public class CustomerDto implements Serializable, SakilaDtos {
-    private  Integer id;
-    @NotNull
-    private  StoreDto store;
+    private Integer id;
+    // @NotNull
+    // private StoreDto store;
     @Size(max = 45)
     @NotNull
-    private  String firstName;
+    private String firstName;
     @Size(max = 45)
     @NotNull
-    private  String lastName;
+    private String lastName;
     @Size(max = 50)
-    private  String email;
+    private String email;
     @NotNull
-    private  AddressDto address;
+    private AddressDto address;
     @NotNull
-    private  Boolean active;
+    private Boolean active;
     @NotNull
-    private  Instant createDate;
-    private  Instant lastUpdate;
+    private Date createDate;
+    @NotNull
+    private Date lastUpdate;
+    @NotNull
+    private Set<PaymentDto> paymentSet;
+     private Set<RentalDto> rentalSet;
+
 }
