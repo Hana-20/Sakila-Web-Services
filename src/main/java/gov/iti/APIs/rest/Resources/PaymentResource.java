@@ -23,8 +23,7 @@ public class PaymentResource {
             paymentDtos.add(paymentDto);
         }
 
-        GenericEntity entity = new GenericEntity<List<PaymentDto>>(paymentDtos) {
-        };
+        GenericEntity entity = new GenericEntity<List<PaymentDto>>(paymentDtos) {};
         return Response.ok().entity(entity).build();
     }
 

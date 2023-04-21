@@ -3,12 +3,15 @@ package gov.iti.models.dtos;
 import gov.iti.models.entities.Address;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import jakarta.ws.rs.core.Link;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * A DTO for the {@link Address} entity
@@ -40,4 +43,5 @@ public class AddressDto implements Serializable, SakilaDtos {
     private String phone;
     @NotNull
     private Date lastUpdate;
+    List <Link>links=new ArrayList<>();
 }

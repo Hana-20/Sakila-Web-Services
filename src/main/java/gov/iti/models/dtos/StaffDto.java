@@ -2,10 +2,13 @@ package gov.iti.models.dtos;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import jakarta.ws.rs.core.Link;
 import lombok.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -44,6 +47,7 @@ public class StaffDto implements Serializable, SakilaDtos {
     private Set<RentalDto> rentalSet;
     @NotNull
     private Set<PaymentDto> paymentSet;
+    List <Link>links=new ArrayList<>();
 
 
 }
