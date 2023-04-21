@@ -34,7 +34,7 @@ public class LanguageResource {
     public Response getLanguageById(@PathParam("id") int id, @Context UriInfo uriInfo) {
         LanguageDto languageDto = (LanguageDto) crudService.getdtoById(id);
         if (languageDto== null)
-        throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
+        throw new ResourceNotFoundException("Language with ID:" + id + " Not Found");
         return Response.ok().entity(languageDto).build();
     }
 

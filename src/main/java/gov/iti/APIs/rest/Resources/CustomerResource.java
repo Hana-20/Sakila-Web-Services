@@ -35,7 +35,7 @@ public class CustomerResource {
     public Response getCustomerById(@PathParam("id") int id, @Context UriInfo uriInfo) {
        CustomerDto customerDto = (CustomerDto) crudService.getdtoById(id);
        if ( customerDto== null)
-       throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
+       throw new ResourceNotFoundException("Customer with ID:" + id + " Not Found");
         //CustomerDto.getLinks().add(Link.fromUriBuilder(uriInfo.getAbsolutePathBuilder()).rel("self").build());
         return Response.ok().entity(customerDto).build();
     }

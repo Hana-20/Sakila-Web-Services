@@ -34,7 +34,7 @@ public class InventoryResource {
     public Response getInventoryById(@PathParam("id") int id, @Context UriInfo uriInfo) {
         InventoryDto inventoryDto = (InventoryDto) crudService.getdtoById(id);
         if (inventoryDto== null)
-        throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
+        throw new ResourceNotFoundException("Inventory with ID:" + id + " Not Found");
         return Response.ok().entity(inventoryDto).build();
     }
 

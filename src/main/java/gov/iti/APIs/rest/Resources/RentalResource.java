@@ -34,7 +34,7 @@ public class RentalResource {
     public Response getRentalById(@PathParam("id") int id, @Context UriInfo uriInfo) {
         RentalDto rentalDto = (RentalDto) crudService.getdtoById(id);
         if (rentalDto== null)
-        throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
+        throw new ResourceNotFoundException("Rental with ID:" + id + " Not Found");
         return Response.ok().entity(rentalDto).build();
     }
 

@@ -36,7 +36,7 @@ public class StaffResource {
     public Response getStaffById(@PathParam("id") int id, @Context UriInfo uriInfo) {
         StaffDto staffDto = (StaffDto) crudService.getdtoById(id);
         if (staffDto== null)
-        throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
+        throw new ResourceNotFoundException("Staff with ID:" + id + " Not Found");
         return Response.ok().entity(staffDto).build();
     }
 

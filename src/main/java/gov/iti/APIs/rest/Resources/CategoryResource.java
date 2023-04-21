@@ -36,7 +36,7 @@ public class CategoryResource {
     public Response getCategoryById(@PathParam("id") int id, @Context UriInfo uriInfo) {
        CategoryDto categoryDto = (CategoryDto) crudService.getdtoById(id);
        if (categoryDto== null)
-       throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
+       throw new ResourceNotFoundException("Category with ID:" + id + " Not Found");
         //CategoryDto.getLinks().add(Link.fromUriBuilder(uriInfo.getAbsolutePathBuilder()).rel("self").build());
         return Response.ok().entity(categoryDto).build();
     }

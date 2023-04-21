@@ -35,7 +35,7 @@ public class AddressResource {
     public Response getAddressById(@PathParam("id") int id, @Context UriInfo uriInfo) {
        AddressDto addressDto = (AddressDto) crudService.getdtoById(id);
        if (addressDto== null)
-       throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
+       throw new ResourceNotFoundException("Address with ID:" + id + " Not Found");
         //AddressDto.getLinks().add(Link.fromUriBuilder(uriInfo.getAbsolutePathBuilder()).rel("self").build());
         return Response.ok().entity(addressDto).build();
     }

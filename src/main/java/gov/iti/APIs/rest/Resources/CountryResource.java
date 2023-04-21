@@ -34,7 +34,7 @@ public class CountryResource {
     public Response getCountryById(@PathParam("id") int id, @Context UriInfo uriInfo) {
         CountryDto countryDto = (CountryDto) crudService.getdtoById(id);
         if (countryDto== null)
-        throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
+        throw new ResourceNotFoundException("Country with ID:" + id + " Not Found");
         return Response.ok().entity(countryDto).build();
     }
 

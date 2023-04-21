@@ -34,7 +34,7 @@ public class PaymentResource {
     public Response getPaymentById(@PathParam("id") int id, @Context UriInfo uriInfo) {
         PaymentDto paymentDto = (PaymentDto) crudService.getdtoById(id);
         if (paymentDto== null)
-        throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
+        throw new ResourceNotFoundException("Payment with ID:" + id + " Not Found");
         return Response.ok().entity(paymentDto).build();
     }
 

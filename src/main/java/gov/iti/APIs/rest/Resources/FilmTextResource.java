@@ -34,7 +34,7 @@ public class FilmTextResource {
     public Response getFilmTextById(@PathParam("id") int id, @Context UriInfo uriInfo) {
         FilmTextDto filmTextDto = (FilmTextDto) crudService.getdtoById(id);
         if (filmTextDto== null)
-        throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
+        throw new ResourceNotFoundException("FilmText with ID:" + id + " Not Found");
         return Response.ok().entity(filmTextDto).build();
     }
 

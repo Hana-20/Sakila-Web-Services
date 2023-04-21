@@ -36,7 +36,7 @@ public class StoreResource {
     public Response getStoreById(@PathParam("id") int id, @Context UriInfo uriInfo) {
         StoreDto storeDto = (StoreDto) crudService.getdtoById(id);
         if (storeDto == null)
-        throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
+        throw new ResourceNotFoundException("Store with ID:" + id + " Not Found");
         storeDto.getLinks().add(Link.fromUriBuilder(uriInfo.getAbsolutePathBuilder()).rel("self").build());
         return Response.ok().entity(storeDto).build();
     }

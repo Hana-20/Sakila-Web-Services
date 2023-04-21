@@ -35,7 +35,7 @@ public class FilmResource {
     public Response getFilmById(@PathParam("id") int id, @Context UriInfo uriInfo) {
        FilmDto filmDto = (FilmDto) crudService.getdtoById(id);
        if (filmDto == null)
-       throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
+       throw new ResourceNotFoundException("Film with ID:" + id + " Not Found");
         //FilmDto.getLinks().add(Link.fromUriBuilder(uriInfo.getAbsolutePathBuilder()).rel("self").build());
         return Response.ok().entity(filmDto).build();
     }

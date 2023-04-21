@@ -34,7 +34,7 @@ public class CityResource {
     public Response getCityById(@PathParam("id") int id, @Context UriInfo uriInfo) {
         CityDto cityDto = (CityDto) crudService.getdtoById(id);
         if (cityDto== null)
-        throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
+        throw new ResourceNotFoundException("City with ID:" + id + " Not Found");
         return Response.ok().entity(cityDto).build();
     }
 
