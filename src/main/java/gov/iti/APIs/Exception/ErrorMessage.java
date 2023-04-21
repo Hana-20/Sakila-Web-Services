@@ -1,4 +1,4 @@
-package gov.iti.APIs.rest.Exception;
+package gov.iti.APIs.Exception;
 
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.AllArgsConstructor;

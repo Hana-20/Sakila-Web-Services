@@ -1,7 +1,7 @@
 package gov.iti.APIs.rest.Resources;
 
 import jakarta.ws.rs.Path;
-import gov.iti.APIs.rest.Exception.ResourceNotFoundException;
+import gov.iti.APIs.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.models.dtos.StaffDto;
 import gov.iti.services.CrudServices;

@@ -3,6 +3,7 @@ package gov.iti.APIs.soap;
 import java.util.ArrayList;
 import java.util.List;
 
+import gov.iti.APIs.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.FilmTextDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;
@@ -18,7 +19,11 @@ public class FilmTextService {
     }
     
     public FilmTextDto getFilmTextById(Integer id) {
-        return (FilmTextDto) filmTextService.getdtoById(id);
+
+        FilmTextDto filmTextDto = (FilmTextDto) filmTextService.getdtoById(id);
+        if (filmTextDto== null)
+        throw new ResourceNotFoundException("FilmText with ID:" + id + " Not Found");
+            return filmTextDto;
     }
     
     public void deleteFilmText(Integer id) {

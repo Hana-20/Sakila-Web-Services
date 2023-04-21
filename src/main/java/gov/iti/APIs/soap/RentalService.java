@@ -4,6 +4,7 @@ package gov.iti.APIs.soap;
 import java.util.ArrayList;
 import java.util.List;
 
+import gov.iti.APIs.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.RentalDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;
@@ -19,7 +20,10 @@ public class RentalService {
     }
     
     public RentalDto getRentalById(Integer id) {
-        return (RentalDto) rentalService.getdtoById(id);
+        RentalDto rentalDto = (RentalDto) rentalService.getdtoById(id);
+        if (rentalDto== null)
+        throw new ResourceNotFoundException("Rental with ID:" + id + " Not Found");
+        return rentalDto;
     }
     
     public void deleteRental(Integer id) {

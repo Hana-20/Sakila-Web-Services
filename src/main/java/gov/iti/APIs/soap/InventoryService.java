@@ -3,6 +3,9 @@ package gov.iti.APIs.soap;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.modelmapper.internal.bytebuddy.asm.Advice.Return;
+
+import gov.iti.APIs.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.InventoryDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;
@@ -18,7 +21,10 @@ public class InventoryService {
     }
     
     public InventoryDto getInventoryById(Integer id) {
-        return (InventoryDto) inventoryService.getdtoById(id);
+        InventoryDto inventoryDto = (InventoryDto) inventoryService.getdtoById(id);
+        if (inventoryDto== null)
+        throw new ResourceNotFoundException("Inventory with ID:" + id + " Not Found");
+        return inventoryDto;
     }
     
     public void deleteInventory(Integer id) {

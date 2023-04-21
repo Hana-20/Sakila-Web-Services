@@ -4,6 +4,9 @@ package gov.iti.APIs.soap;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.glassfish.jersey.process.internal.Stage;
+
+import gov.iti.APIs.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.models.dtos.StaffDto;
 import gov.iti.services.CrudServices;
@@ -19,7 +22,10 @@ public class StaffService {
     }
     
     public StaffDto getStaffById(Integer id) {
-        return (StaffDto) staffService.getdtoById(id);
+        StaffDto staffDto =(StaffDto) staffService.getdtoById(id);
+        if (staffDto== null)
+        throw new ResourceNotFoundException("Staff with ID:" + id + " Not Found");
+        return staffDto;
     }
     
     public void deleteStaff(Integer id) {

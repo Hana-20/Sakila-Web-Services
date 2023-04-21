@@ -3,6 +3,7 @@ package gov.iti.APIs.soap;
 import java.util.ArrayList;
 import java.util.List;
 
+import gov.iti.APIs.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.CategoryDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;
@@ -18,7 +19,10 @@ public class CategoryService {
     }
     
     public CategoryDto getCategoryById(Integer id) {
-        return (CategoryDto) categoryService.getdtoById(id);
+        CategoryDto categoryDto=(CategoryDto) categoryService.getdtoById(id);
+        if (categoryDto== null)
+        throw new ResourceNotFoundException("Category with ID:" + id + " Not Found");
+            return categoryDto;
     }
     
     public void deleteCategory(Integer id) {

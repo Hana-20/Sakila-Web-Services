@@ -1,4 +1,4 @@
-package gov.iti.APIs.rest.Exception;
+package gov.iti.APIs.Exception;
 
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;

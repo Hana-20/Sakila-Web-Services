@@ -1,6 +1,6 @@
 package gov.iti.APIs.rest.Resources;
 
-import gov.iti.APIs.rest.Exception.ResourceNotFoundException;
+import gov.iti.APIs.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.CustomerDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;

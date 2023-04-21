@@ -4,6 +4,7 @@ package gov.iti.APIs.soap;
 import java.util.ArrayList;
 import java.util.List;
 
+import gov.iti.APIs.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.LanguageDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;
@@ -19,7 +20,10 @@ public class LanguageService {
     }
     
     public LanguageDto getLanguageById(Integer id) {
-        return (LanguageDto) languageService.getdtoById(id);
+        LanguageDto languageDto = (LanguageDto) languageService.getdtoById(id);
+        if (languageDto== null)
+        throw new ResourceNotFoundException("Language with ID:" + id + " Not Found");
+        return languageDto;
     }
     
     public void deleteLanguage(Integer id) {

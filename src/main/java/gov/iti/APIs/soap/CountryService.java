@@ -3,6 +3,7 @@ package gov.iti.APIs.soap;
 import java.util.ArrayList;
 import java.util.List;
 
+import gov.iti.APIs.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.CountryDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;
@@ -18,7 +19,10 @@ public class CountryService {
     }
     
     public CountryDto getCountryById(Integer id) {
-        return (CountryDto) countryService.getdtoById(id);
+        CountryDto countryDto = (CountryDto) countryService.getdtoById(id);
+        if (countryDto== null)
+        throw new ResourceNotFoundException("Country with ID:" + id + " Not Found");
+        return countryDto;
     }
     
     public void deleteCountry(Integer id) {

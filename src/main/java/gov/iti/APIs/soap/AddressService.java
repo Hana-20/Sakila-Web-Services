@@ -3,6 +3,7 @@ package gov.iti.APIs.soap;
 import java.util.ArrayList;
 import java.util.List;
 
+import gov.iti.APIs.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.AddressDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;
@@ -18,7 +19,10 @@ public class AddressService {
     }
     
     public AddressDto getAddressById(Integer id) {
-        return (AddressDto)addressService.getdtoById(id);
+        AddressDto address=(AddressDto)addressService.getdtoById(id);
+        if(address==null)
+        throw new ResourceNotFoundException("Address with ID:" + id + " Not Found");
+        return address;
     }
     
     public void deleteAddress(Integer id) {

@@ -3,6 +3,7 @@ package gov.iti.APIs.soap;
 import java.util.ArrayList;
 import java.util.List;
 
+import gov.iti.APIs.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.PaymentDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;
@@ -18,9 +19,11 @@ public class PaymentService {
     }
     
     public PaymentDto getPaymentById(Integer id) {
-        return (PaymentDto) paymentService.getdtoById(id);
+        PaymentDto paymentDto = (PaymentDto) paymentService.getdtoById(id);
+        if (paymentDto== null)
+        throw new ResourceNotFoundException("Payment with ID:" + id + " Not Found");
+        return paymentDto;
     }
-    
     public void deletePayment(Integer id) {
         paymentService.delete(id);
     }

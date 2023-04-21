@@ -3,6 +3,7 @@ package gov.iti.APIs.soap;
 import java.util.ArrayList;
 import java.util.List;
 
+import gov.iti.APIs.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.CustomerDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;
@@ -18,7 +19,10 @@ public class CustomerService {
     }
     
     public CustomerDto getCustomerById(Integer id) {
-        return (CustomerDto) customerService.getdtoById(id);
+        CustomerDto customerDto = (CustomerDto) customerService.getdtoById(id);
+        if ( customerDto== null)
+        throw new ResourceNotFoundException("Customer with ID:" + id + " Not Found");
+        return  customerDto;
     }
     
     public void deleteCustomer(Integer id) {
