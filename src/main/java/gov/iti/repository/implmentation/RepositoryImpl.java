@@ -35,15 +35,18 @@ public class RepositoryImpl<T extends SakilaEntities> implements Repository<T> {
     @Override
     public void delete(Integer id) {
         EntityManager em = emf.createEntityManager();
-        // String jpql = "DELETE FROM " + entityClass.getSimpleName() + " e WHERE e.id = :id";
+        // String jpql = "DELETE FROM " + entityClass.getSimpleName() + " e WHERE e.id =
+        // :id";
         // Query query = em.createQuery(jpql);
         // query.setParameter("id", id);
-        
+
         em.getTransaction().begin();
         // int deletedCount = query.executeUpdate();
         T obj = em.find(entityClass, id);
-        em.remove(obj);
-        em.getTransaction().commit();
+        if (obj != null) {
+            em.remove(obj);
+            em.getTransaction().commit();
+        }
         // System.out.println(deletedCount);
         em.close();
 

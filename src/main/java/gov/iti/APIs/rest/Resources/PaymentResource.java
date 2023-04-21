@@ -1,5 +1,6 @@
 package gov.iti.APIs.rest.Resources;
 
+import gov.iti.APIs.rest.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.PaymentDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;
@@ -32,6 +33,8 @@ public class PaymentResource {
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response getPaymentById(@PathParam("id") int id, @Context UriInfo uriInfo) {
         PaymentDto paymentDto = (PaymentDto) crudService.getdtoById(id);
+        if (paymentDto== null)
+        throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
         return Response.ok().entity(paymentDto).build();
     }
 

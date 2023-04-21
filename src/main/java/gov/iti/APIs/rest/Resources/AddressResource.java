@@ -1,5 +1,6 @@
 package gov.iti.APIs.rest.Resources;
 
+import gov.iti.APIs.rest.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.AddressDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;
@@ -33,6 +34,8 @@ public class AddressResource {
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response getAddressById(@PathParam("id") int id, @Context UriInfo uriInfo) {
        AddressDto addressDto = (AddressDto) crudService.getdtoById(id);
+       if (addressDto== null)
+       throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
         //AddressDto.getLinks().add(Link.fromUriBuilder(uriInfo.getAbsolutePathBuilder()).rel("self").build());
         return Response.ok().entity(addressDto).build();
     }

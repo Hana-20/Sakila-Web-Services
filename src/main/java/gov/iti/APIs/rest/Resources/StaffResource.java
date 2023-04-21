@@ -1,7 +1,7 @@
 package gov.iti.APIs.rest.Resources;
 
 import jakarta.ws.rs.Path;
-
+import gov.iti.APIs.rest.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.models.dtos.StaffDto;
 import gov.iti.services.CrudServices;
@@ -35,12 +35,15 @@ public class StaffResource {
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response getStaffById(@PathParam("id") int id, @Context UriInfo uriInfo) {
         StaffDto staffDto = (StaffDto) crudService.getdtoById(id);
+        if (staffDto== null)
+        throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
         return Response.ok().entity(staffDto).build();
     }
 
     @DELETE
     @Path("{id}")
     public Response deleteStaffById(@PathParam("id") int id) {
+       
         crudService.delete(id);
         return Response.ok().build();
     }

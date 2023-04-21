@@ -1,5 +1,6 @@
 package gov.iti.APIs.rest.Resources;
 
+import gov.iti.APIs.rest.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.CustomerDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;
@@ -33,6 +34,8 @@ public class CustomerResource {
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response getCustomerById(@PathParam("id") int id, @Context UriInfo uriInfo) {
        CustomerDto customerDto = (CustomerDto) crudService.getdtoById(id);
+       if ( customerDto== null)
+       throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
         //CustomerDto.getLinks().add(Link.fromUriBuilder(uriInfo.getAbsolutePathBuilder()).rel("self").build());
         return Response.ok().entity(customerDto).build();
     }

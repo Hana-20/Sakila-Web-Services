@@ -1,5 +1,6 @@
 package gov.iti.APIs.rest.Resources;
 
+import gov.iti.APIs.rest.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.RentalDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;
@@ -32,6 +33,8 @@ public class RentalResource {
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response getRentalById(@PathParam("id") int id, @Context UriInfo uriInfo) {
         RentalDto rentalDto = (RentalDto) crudService.getdtoById(id);
+        if (rentalDto== null)
+        throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
         return Response.ok().entity(rentalDto).build();
     }
 

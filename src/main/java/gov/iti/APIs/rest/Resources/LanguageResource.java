@@ -1,5 +1,6 @@
 package gov.iti.APIs.rest.Resources;
 
+import gov.iti.APIs.rest.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.LanguageDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;
@@ -32,6 +33,8 @@ public class LanguageResource {
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response getLanguageById(@PathParam("id") int id, @Context UriInfo uriInfo) {
         LanguageDto languageDto = (LanguageDto) crudService.getdtoById(id);
+        if (languageDto== null)
+        throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
         return Response.ok().entity(languageDto).build();
     }
 

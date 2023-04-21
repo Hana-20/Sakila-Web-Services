@@ -1,5 +1,6 @@
 package gov.iti.APIs.rest.Resources;
 
+import gov.iti.APIs.rest.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.FilmDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;
@@ -33,6 +34,8 @@ public class FilmResource {
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response getFilmById(@PathParam("id") int id, @Context UriInfo uriInfo) {
        FilmDto filmDto = (FilmDto) crudService.getdtoById(id);
+       if (filmDto == null)
+       throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
         //FilmDto.getLinks().add(Link.fromUriBuilder(uriInfo.getAbsolutePathBuilder()).rel("self").build());
         return Response.ok().entity(filmDto).build();
     }

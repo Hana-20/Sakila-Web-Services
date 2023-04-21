@@ -1,5 +1,4 @@
 package gov.iti.services;
-
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.models.entities.EntityFactory;
 import gov.iti.models.entities.SakilaEntities;
@@ -35,7 +34,10 @@ public class CrudServices<T extends SakilaDtos> {
     }
 
     public SakilaDtos getdtoById(Integer id) {
-        return sakilaMapper.toDto(repositoryImpl.getById(id), dtoClass);
+        SakilaEntities entity=repositoryImpl.getById(id);
+        if (entity == null)
+            return null;
+        return sakilaMapper.toDto(entity, dtoClass);
     }
 
     public void delete(Integer id) {

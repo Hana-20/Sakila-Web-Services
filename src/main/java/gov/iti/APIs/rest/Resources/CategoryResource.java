@@ -1,6 +1,7 @@
 package gov.iti.APIs.rest.Resources;
 
 
+import gov.iti.APIs.rest.Exception.ResourceNotFoundException;
 import gov.iti.models.dtos.CategoryDto;
 import gov.iti.models.dtos.SakilaDtos;
 import gov.iti.services.CrudServices;
@@ -34,6 +35,8 @@ public class CategoryResource {
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response getCategoryById(@PathParam("id") int id, @Context UriInfo uriInfo) {
        CategoryDto categoryDto = (CategoryDto) crudService.getdtoById(id);
+       if (categoryDto== null)
+       throw new ResourceNotFoundException("Actor with ID:" + id + " Not Found");
         //CategoryDto.getLinks().add(Link.fromUriBuilder(uriInfo.getAbsolutePathBuilder()).rel("self").build());
         return Response.ok().entity(categoryDto).build();
     }
